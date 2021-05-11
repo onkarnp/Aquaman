@@ -4,27 +4,49 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private Button button;
+
+    private static int SPLASH_SCREEN = 5000;
+
+    //variables
+    Animation topAnim, bottomAnim;
+    ImageView dolphin_logo;
+    TextView aquaman, tagline;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        //Animations
+        topAnim = AnimationUtils.loadAnimation(this,R.anim.top_animation);
+        bottomAnim = AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
+
+        //hooks
+        dolphin_logo = findViewById(R.id.dolphin_logo);
+        aquaman = findViewById(R.id.Aquaman);
+        tagline = findViewById(R.id.tagline);
+
+        dolphin_logo.setAnimation(topAnim);
+        aquaman.setAnimation(bottomAnim);
+        tagline.setAnimation(bottomAnim);
+
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onClick(View v){
-                openDashboard();
+            public void run() {
+                Intent intent = new Intent(MainActivity.this,Dashboard.class);
+                startActivity(intent);
+                finish();
             }
-        });
-
-    }
-
-    public void openDashboard(){
-        Intent intent = new Intent(this,Dashboard.class);
-        startActivity(intent);
+        },SPLASH_SCREEN);
     }
 }

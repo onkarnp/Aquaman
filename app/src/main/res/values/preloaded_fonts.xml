@@ -2,6 +2,7 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/arbutus</item>
+        <item>@font/cantora_one</item>
         <item>@font/fredoka_one</item>
         <item>@font/leckerli_one</item>
     </array>
