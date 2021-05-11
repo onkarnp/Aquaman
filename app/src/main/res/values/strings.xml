@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Aquaman</string>
+    <string name="logo1">logo1</string>
+    <string name="logo2">logo2</string>
+    <string name="Aquaman">_ Aquaman _</string>
+    <string name="Dashboard">Dashboard</string>
+    <string name="profilePic">profilePic</string>
+    <string name="XYZ">XYZ</string>
+</resources>
