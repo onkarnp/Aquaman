@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
         <item>@font/arbutus</item>
         <item>@font/cantora_one</item>
+        <item>@font/francois_one</item>
         <item>@font/fredoka_one</item>
         <item>@font/leckerli_one</item>
+        <item>@font/trade_winds</item>
     </array>
 </resources>
