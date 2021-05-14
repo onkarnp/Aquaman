@@ -3,6 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/</item>
         <item>@font/arbutus</item>
+        <item>@font/bungee</item>
         <item>@font/cantora_one</item>
         <item>@font/francois_one</item>
         <item>@font/fredoka_one</item>

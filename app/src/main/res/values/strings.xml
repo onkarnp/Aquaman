@@ -7,4 +7,19 @@
     <string name="profilePic">profilePic</string>
     <string name="XYZ">XYZ</string>
     <string name="tagline">At your doorsteps</string>
+    <string name="login">Login</string>
+    <string name="helloThere">Hello there,</string>
+    <string name="logo">logo</string>
+    <string name="profileIcon">profileIcon</string>
+    <string name="Profile">Profile</string>
+    <string name="orderIcon">orderIcon</string>
+    <string name="Order">Order</string>
+    <string name="historyIcon">historyIcon</string>
+    <string name="History">History</string>
+    <string name="faqIcon">faqIcon</string>
+    <string name="FAQ">FAQ</string>
+    <string name="contactIcon">contactIcon</string>
+    <string name="Contact">Contact</string>
+    <string name="logoutIcon">logoutIcon</string>
+    <string name="LogOut">LogOut</string>
 </resources>
