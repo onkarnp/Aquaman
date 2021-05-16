@@ -71,14 +71,17 @@
             >
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/profileCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
+                android:clickable="true"
                 android:layout_margin="12dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="60dp"
-                app:cardBackgroundColor="@color/white">
+                android:focusable="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -108,14 +111,17 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/orderCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
+                android:clickable="true"
                 android:layout_margin="12dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="60dp"
-                app:cardBackgroundColor="@color/white">
+                android:focusable="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -146,14 +152,17 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/historyCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
+                android:clickable="true"
                 android:layout_margin="12dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="60dp"
-                app:cardBackgroundColor="@color/white">
+                android:focusable="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -181,15 +190,19 @@
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
+                android:id="@+id/profile1Card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
+                android:clickable="true"
                 android:layout_margin="12dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="60dp"
-                app:cardBackgroundColor="@color/white">
+                android:focusable="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -216,15 +229,19 @@
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
+                android:id="@+id/faqCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
+                android:clickable="true"
                 android:layout_margin="12dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="60dp"
-                app:cardBackgroundColor="@color/white">
+                android:focusable="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -252,15 +269,19 @@
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
+                android:id="@+id/contactCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
+                android:clickable="true"
                 android:layout_margin="12dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="60dp"
-                app:cardBackgroundColor="@color/white">
+                android:focusable="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -287,15 +308,19 @@
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
+                android:id="@+id/contact1Card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
+                android:clickable="true"
                 android:layout_margin="12dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="60dp"
-                app:cardBackgroundColor="@color/white">
+                android:focusable="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -322,15 +347,19 @@
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
+                android:id="@+id/logOutCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
+                android:clickable="true"
                 android:layout_margin="12dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="60dp"
-                app:cardBackgroundColor="@color/white">
+                android:focusable="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"

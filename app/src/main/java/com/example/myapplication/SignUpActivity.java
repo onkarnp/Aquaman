@@ -1,15 +1,42 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends AppCompatActivity {
+
+
+    private EditText inputFullName,inputHomeAddress,inputMobileNo,inputEmail,inputPassword,inputConfirmPassword;
+    private Button signUpButton;
+    private FirebaseAuth mAuth;
+
+    public SignUpActivity(EditText inputFullName, EditText inputHomeAddress, EditText inputMobileNo, EditText inputEmail, EditText inputPassword, EditText inputConfirmPassword) {
+        this.inputFullName = inputFullName;
+        this.inputHomeAddress = inputHomeAddress;
+        this.inputMobileNo = inputMobileNo;
+        this.inputEmail = inputEmail;
+        this.inputPassword = inputPassword;
+        this.inputConfirmPassword = inputConfirmPassword;
+    }
+    public SignUpActivity() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +47,24 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         TextView btn = findViewById(R.id.logInText);
+        inputFullName = findViewById(R.id.inputFullName);
+        inputHomeAddress = findViewById(R.id.inputHomeAddress);
+        inputMobileNo = findViewById(R.id.inputMobileNo);
+        inputEmail = findViewById(R.id.inputEmail);
+        inputPassword = findViewById(R.id.inputPassword);
+        inputConfirmPassword = findViewById(R.id.inputConfirmPassword);
+        mAuth = FirebaseAuth.getInstance();
+
+        signUpButton = findViewById(R.id.SignupButton);
+        signUpButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                checkCredentials();
+            }
+        });
+
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,4 +73,76 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
+    public void checkCredentials(){
+        String fullName = inputFullName.getText().toString();
+        String homeAddress = inputHomeAddress.getText().toString();
+        String mobileNo = inputMobileNo.getText().toString();
+        String email = inputEmail.getText().toString();
+        String password = inputPassword.getText().toString();
+        String confirmPassword = inputConfirmPassword.getText().toString();
+        if(fullName.isEmpty() || fullName.length()<5)
+        {
+            showError(inputFullName, "Your Name is not Valid.");
+        }
+        else if (homeAddress.isEmpty() || homeAddress.length()<5)
+        {
+            showError(inputHomeAddress, "Your address is not valid.");
+        }
+        else if (mobileNo.length() != 10)
+        {
+            showError(inputMobileNo, "Your mobile no. is invalid.");
+        }
+        else{
+            createUser();
+        }
+    }
+
+    public void createUser(){
+        String email = inputEmail.getText().toString();
+        String password = inputPassword.getText().toString();
+        String confirmPassword = inputConfirmPassword.getText().toString();
+
+        if(!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches())
+        {
+            if(!password.isEmpty() && confirmPassword.equals(password)){
+                mAuth.createUserWithEmailAndPassword(email,password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                Toast.makeText(SignUpActivity.this, "Registered successfully !!", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(SignUpActivity.this,LogInActivity.class));
+                                finish();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(SignUpActivity.this, "Registration error :(", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+            else {
+                if(password.isEmpty()) {
+                    showError(inputPassword, "Empty fields are not allowed.");
+                }
+                else {
+                    showError(inputConfirmPassword, "Password is not matching.");
+                }
+            }
+        }
+        else if(email.isEmpty())
+        {
+            showError(inputEmail,"Empty fields are not allowed.");
+        }
+        else{
+            showError(inputEmail,"Please Enter correct Email.");
+        }
+    }
+
+
+    public void showError(EditText input, String s)
+    {
+        input.setError(s);
+        input.requestFocus();
+    }
+
 }
