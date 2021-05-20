@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -19,13 +20,21 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
 
 
+    private static final String USER ="User" ;
     private EditText inputFullName,inputHomeAddress,inputMobileNo,inputEmail,inputPassword,inputConfirmPassword;
     private Button signUpButton;
+    private ProgressDialog loadingBar;
     private FirebaseAuth mAuth;
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
+
 
     public SignUpActivity(EditText inputFullName, EditText inputHomeAddress, EditText inputMobileNo, EditText inputEmail, EditText inputPassword, EditText inputConfirmPassword) {
         this.inputFullName = inputFullName;
@@ -53,9 +62,10 @@ public class SignUpActivity extends AppCompatActivity {
         inputEmail = findViewById(R.id.inputEmail);
         inputPassword = findViewById(R.id.inputPassword);
         inputConfirmPassword = findViewById(R.id.inputConfirmPassword);
+        loadingBar = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
-
         signUpButton = findViewById(R.id.SignupButton);
+
         signUpButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v)
@@ -73,6 +83,9 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    //function for checking credentials whether inserted in correct format
     public void checkCredentials(){
         String fullName = inputFullName.getText().toString();
         String homeAddress = inputHomeAddress.getText().toString();
@@ -97,7 +110,12 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
+
+    //function for registration
     public void createUser(){
+        String fullName = inputFullName.getText().toString();
+        String homeAddress = inputHomeAddress.getText().toString();
+        String mobileNo = inputMobileNo.getText().toString();
         String email = inputEmail.getText().toString();
         String password = inputPassword.getText().toString();
         String confirmPassword = inputConfirmPassword.getText().toString();
@@ -105,20 +123,31 @@ public class SignUpActivity extends AppCompatActivity {
         if(!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches())
         {
             if(!password.isEmpty() && confirmPassword.equals(password)){
+                loadingBar.setTitle("Create Account");
+                loadingBar.setMessage("Please wait while account is being created.");
+                loadingBar.setCanceledOnTouchOutside(false);
+                loadingBar.show();
                 mAuth.createUserWithEmailAndPassword(email,password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                Toast.makeText(SignUpActivity.this, "Registered successfully !!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(SignUpActivity.this,LogInActivity.class));
-                                finish();
+                                if (task.isSuccessful()) {
+                                    rootNode = FirebaseDatabase.getInstance();
+                                    reference = rootNode.getReference("users");
+                                    //get all the values
+                                    User user = new User(fullName,homeAddress,mobileNo,email,password);
+                                    reference.child(mobileNo).setValue(user);
+                                    Toast.makeText(SignUpActivity.this, "Registered successfully !!", Toast.LENGTH_SHORT).show();
+                                    loadingBar.dismiss();
+                                    startActivity(new Intent(SignUpActivity.this, LogInActivity.class));
+                                    finish();
+                                }else
+                                {
+                                    loadingBar.dismiss();
+                                    Toast.makeText(SignUpActivity.this, "Registration error :(", Toast.LENGTH_SHORT).show();
+                                }
                             }
-                        }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(SignUpActivity.this, "Registration error :(", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        });
             }
             else {
                 if(password.isEmpty()) {
@@ -138,11 +167,10 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
-
+//Function to show error message when input is not in correct format
     public void showError(EditText input, String s)
     {
         input.setError(s);
         input.requestFocus();
     }
-
 }
