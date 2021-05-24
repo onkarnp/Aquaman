@@ -36,4 +36,5 @@
     <string name="notRegisteredYet">Not registered yet?</string>
     <string name="showPassword">Show Password</string>
     <string name="underDevelopement">Under Developement</string>
+    <string name="userProfile">User Profile</string>
 </resources>

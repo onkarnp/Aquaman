@@ -8,17 +8,18 @@
     android:background="@drawable/background1">
 
     <ImageView
-        android:id="@+id/dolphin_logo"
+        android:id="@+id/addUser"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:contentDescription="@string/logo"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04000002"
-        app:srcCompat="@drawable/dolphin_logo" />
+        app:layout_constraintVertical_bias="0.05"
+        app:srcCompat="@drawable/padlock" />
 
     <TextView
         android:id="@+id/SignUp"
@@ -31,7 +32,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dolphin_logo"
+        app:layout_constraintTop_toBottomOf="@+id/addUser"
         app:layout_constraintVertical_bias="0.031" />
 
     <EditText

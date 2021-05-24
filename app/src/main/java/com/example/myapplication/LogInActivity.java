@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ public class LogInActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     CheckBox showPassword;
     TextView btn,forgotPassword;
+    private ProgressDialog loadingBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +47,7 @@ public class LogInActivity extends AppCompatActivity {
         LogInButton = findViewById(R.id.LoginButton);
         showPassword = findViewById(R.id.showPassword);
         forgotPassword = findViewById(R.id.forgotPassword);
+        loadingBar = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
 
         LogInButton.setOnClickListener(new View.OnClickListener(){
@@ -120,17 +123,23 @@ public class LogInActivity extends AppCompatActivity {
 
         if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             if (!password.isEmpty()) {
+                loadingBar.setTitle("Logging in");
+                loadingBar.setMessage("Checking credentials...");
+                loadingBar.setCanceledOnTouchOutside(false);
+                loadingBar.show();
                 mAuth.signInWithEmailAndPassword(email,password)
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
                                 Toast.makeText(LogInActivity.this, "Logged in successfully !!", Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
                                 startActivity(new Intent(LogInActivity.this,Dashboard.class));
                                 finish();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        loadingBar.dismiss();
                         Toast.makeText(LogInActivity.this, "Log in failed :(", Toast.LENGTH_SHORT).show();
                     }
                 });

@@ -17,7 +17,7 @@
         tools:layout_editor_absoluteY="-16dp">
 
         <ImageView
-            android:id="@+id/dolphin_logo"
+            android:id="@+id/addUser"
             android:layout_width="307dp"
             android:layout_height="383dp"
             android:layout_marginBottom="40sp"

@@ -90,9 +90,7 @@ public class SignUpActivity extends AppCompatActivity {
         String fullName = inputFullName.getText().toString();
         String homeAddress = inputHomeAddress.getText().toString();
         String mobileNo = inputMobileNo.getText().toString();
-        String email = inputEmail.getText().toString();
-        String password = inputPassword.getText().toString();
-        String confirmPassword = inputConfirmPassword.getText().toString();
+
         if(fullName.isEmpty() || fullName.length()<5)
         {
             showError(inputFullName, "Your Name is not Valid.");
@@ -133,10 +131,11 @@ public class SignUpActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     rootNode = FirebaseDatabase.getInstance();
+                                    String userID = mAuth.getCurrentUser().getUid();
                                     reference = rootNode.getReference("users");
                                     //get all the values
                                     User user = new User(fullName,homeAddress,mobileNo,email,password);
-                                    reference.child(mobileNo).setValue(user);
+                                    reference.child(userID).setValue(user);
                                     Toast.makeText(SignUpActivity.this, "Registered successfully !!", Toast.LENGTH_SHORT).show();
                                     loadingBar.dismiss();
                                     startActivity(new Intent(SignUpActivity.this, LogInActivity.class));
