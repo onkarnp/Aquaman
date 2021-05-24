@@ -18,8 +18,7 @@ public class User {
         this.fullName = fullName;
         this.homeAddress = homeAddress;
         this.mobileNo = mobileNo;
-        this.email = email;
-        this.password = password;
+        this.email = email;        this.password = password;
     }
 
     public String getFullName() {
