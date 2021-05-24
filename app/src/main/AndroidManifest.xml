@@ -11,6 +11,7 @@
         android:theme="@style/Theme.MyApplication">
         <activity android:name=".Profile"></activity>
         <activity android:name=".SignUpActivity" />
+        <activity android:name=".OrderActivity" />
         <activity android:name=".LogInActivity" />
         <activity android:name=".Dashboard" />
         <activity android:name=".MainActivity">
