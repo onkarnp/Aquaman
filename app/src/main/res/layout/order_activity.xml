@@ -1,380 +1,372 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/dashboard_image"
+    android:background="@drawable/background1"
     tools:context=".OrderActivity">
-
-
     <LinearLayout
-        android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:background="@color/purple_500">
+        android:layout_width="match_parent">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/dashboard_image"
+        android:padding="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="144dp"
-            android:layout_marginRight="200dp"
-            android:layout_marginBottom="30dp"
-            android:paddingLeft="10dp"
-            android:text="Welcome,Tejas!!"
-            android:textAllCaps="true"
-            android:textColor="@color/material_on_primary_emphasis_high_type"
-            android:textColorHint="#D82525"
-            android:textSize="30sp"
+        <ImageView
+            android:id="@+id/profileIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="20dp"
+            android:contentDescription="@string/Profile"
+            android:src="@drawable/order1"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </LinearLayout>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Select Date"
-        android:drawableLeft="@drawable/calendar_today_24"
-        android:drawablePadding="5dp"
-        android:textColorHint="#00adb5"
-        android:inputType="date"
-        android:layout_marginBottom="40dp"
-        android:layout_marginLeft="10dp"
-        android:id="@+id/date"
-
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkbox1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"/>
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="40dp"
-            android:src="@drawable/water1"
-            android:layout_marginRight="5dp"
-            />
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="20dp" />
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:text="3L"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:layout_weight="1"
-
-
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="rs 20"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            />
-        <Button
-            android:layout_width="0dp"
-            android:onClick="decrement1"
-            android:layout_height="45dp"
-            android:text="-"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            />
-
-        <TextView
-            android:layout_width="0dp"
-            android:id="@+id/quantity1"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:layout_weight="1"
-            android:text="0"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:paddingLeft="17dp"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:onClick="increment1"
-            android:layout_height="45dp"
-            android:text="+"
-            android:layout_marginRight="15dp"
-            android:layout_weight="1"
-            />
-
-
-    </LinearLayout>
-    <View
-        android:layout_width="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_height="1dp"
-        android:background="@color/black"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkbox2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"/>
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/water2"
-            android:layout_marginRight="5dp"
-            />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:text="5L"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:layout_weight="1"
-
-
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="rs 30"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            />
-        <Button
-            android:layout_width="0dp"
-            android:onClick="decrement2"
-            android:layout_height="45dp"
-            android:text="-"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            />
-
-        <TextView
-            android:layout_width="0dp"
-            android:id="@+id/quantity2"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:layout_weight="1"
-            android:text="0"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:paddingLeft="22dp"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:onClick="increment2"
-            android:layout_height="45dp"
-            android:text="+"
-            android:layout_marginRight="15dp"
-            android:layout_weight="1"
-            />
-
-
-    </LinearLayout>
-    <View
-        android:layout_width="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_height="1dp"
-        android:background="@color/black"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkbox3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"/>
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/water2"
-            android:layout_marginRight="5dp"
-            />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:text="10L"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:layout_weight="1"
-
-
-            />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="rs 50"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            />
-        <Button
-            android:layout_width="0dp"
-            android:onClick="decrement3"
-            android:layout_height="45dp"
-            android:text="-"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            />
-
-        <TextView
-            android:layout_width="0dp"
-            android:id="@+id/quantity3"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:layout_weight="1"
-            android:text="0"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:paddingLeft="17dp"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:onClick="increment3"
-            android:layout_height="45dp"
-            android:text="+"
-            android:layout_marginRight="15dp"
-            android:layout_weight="1"
-            />
-
-
-    </LinearLayout>
-    <View
-        android:layout_width="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_height="1dp"
-        android:background="@color/black"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="60dp">
-        <Button
+            android:id="@+id/userProfileHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="Total amount"
-            android:drawableLeft="@drawable/shopping_cart_24"
-            android:onClick="amount"
-
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RS"
-            android:layout_marginLeft="160dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:fontFamily="@font/wellfleet"
+            android:text="@string/placeOrder"
+            android:textColor="#FFFFFF"
             android:layout_marginLeft="10dp"
-            android:text="0"
-            android:textSize="20sp"
-            android:id="@+id/price"
-
-            android:textColor="@color/black"
-            />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp">
-        <Button
-            android:layout_width="184dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="Order Summary"
-            android:id="@+id/sumbtn"/>
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/profileIcon"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="10dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/summary"
-        android:layout_marginLeft="15dp"
-        android:textSize="25sp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="130dp">
-
-        <Button
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="place Order " />
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/calendar_today_24"
+                android:drawablePadding="10dp"
+                android:hint="@string/select_date"
+                android:layout_marginTop="15dp"
+                android:inputType="date"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:drawableStart="@drawable/calendar_today_24" />
+<!--First Item-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <CheckBox
+                    android:id="@+id/checkbox1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/water1"
+                    android:layout_marginEnd="5dp" />
 
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    android:layout_weight="1"
+                    android:text="3L"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="rs 20"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:gravity="center"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:onClick="decrement1"
+                    android:text="-"
+                    android:textColor="#000000"
+                    app:backgroundTint="#FFFFFF"/>
+
+                <TextView
+                    android:id="@+id/quantity1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:gravity="center" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:onClick="increment1"
+                    android:text="+"
+                    android:textColor="#000000"
+                    app:backgroundTint="#FFFFFF"/>
+
+            </LinearLayout>
+<!--Second Item-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <CheckBox
+                    android:id="@+id/checkbox2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/water2"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="5L"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:layout_weight="1" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="rs 30"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_weight="1"
+                    android:gravity="center"/>
+                <Button
+                    android:layout_width="0dp"
+                    android:onClick="decrement2"
+                    android:layout_height="45dp"
+                    android:text="-"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    app:backgroundTint="#FFFFFF"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:id="@+id/quantity2"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:gravity="center" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:onClick="increment2"
+                    android:layout_height="45dp"
+                    android:text="+"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    app:backgroundTint="#FFFFFF"/>
+            </LinearLayout>
+<!--Third Item-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <CheckBox
+                    android:id="@+id/checkbox3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/water2"
+                    android:layout_marginRight="5dp"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="10L"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_weight="1"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="rs 50"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_weight="1"
+                    android:gravity="center"/>
+                <Button
+                    android:layout_width="0dp"
+                    android:onClick="decrement3"
+                    android:layout_height="45dp"
+                    android:text="-"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    app:backgroundTint="#FFFFFF"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:id="@+id/quantity3"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:gravity="center" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:onClick="increment3"
+                    android:layout_height="45dp"
+                    android:text="+"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    app:backgroundTint="#FFFFFF"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="60dp">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Total amount"
+                    android:onClick="amount"
+                    android:background="@drawable/button_bg"
+                    android:textColor="#000000"
+                    app:backgroundTint="#FFFFFF"
+                    android:drawableLeft="@drawable/ic_shopping_cart" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="60dp"
+                    android:gravity="center"
+                    android:text="Rs"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp">
+                <Button
+                    android:layout_width="175dp"
+                    android:layout_height="40dp"
+                    android:text="@string/order_summary"
+                    android:id="@+id/sumbtn"
+                    android:textColor="#000000"
+                    app:backgroundTint="#FFFFFF"
+                    android:background="@drawable/button_bg"/>
+
+                <TextView
+                    android:id="@+id/summary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="130dp"
+                android:background="@drawable/button_bg">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/place_order"
+                    android:background="@drawable/button_bg"
+                    android:textColor="#000000"
+                    app:backgroundTint="#FFFFFF"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-
-</LinearLayout>
-
-
+</ScrollView>
