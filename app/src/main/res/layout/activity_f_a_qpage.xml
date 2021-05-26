@@ -4,10 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingTop="16dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="16dp"
+    android:background="@drawable/background1"
     tools:context=".FAQpage">
 
     <LinearLayout
@@ -15,27 +12,68 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/dashboard_image"
+            android:padding="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <ImageView
+                android:id="@+id/faqIcon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="76dp"
+                android:layout_marginLeft="76dp"
+                android:contentDescription="@string/FAQ"
+                android:src="@drawable/faq"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/faqText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/wellfleet"
+                android:text="@string/FAQ"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/faqIcon"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FAQ"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="24sp"
-            android:textStyle="bold|italic" />
+            android:orientation="vertical"
+            android:layout_margin="10dp">
 
         <TextView
             android:id="@+id/Que1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="30dp"
             android:clickable="true"
             android:onClick="Que1Clicked"
             android:text="@string/Que1"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="24sp"
-            android:textStyle="bold|italic"
-            android:focusable="true" />
+            android:focusable="true"
+            android:textStyle="italic"
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/Ans1"
@@ -49,14 +87,14 @@
             android:id="@+id/Que2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:clickable="true"
             android:focusable="true"
             android:onClick="Que2Clicked"
             android:text="@string/Que2"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="24sp"
-            android:textStyle="bold|italic" />
+            android:textStyle="italic"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/Ans2"
@@ -70,14 +108,14 @@
             android:id="@+id/Que3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:clickable="true"
             android:focusable="true"
             android:onClick="Que3Clicked"
             android:text="@string/Que3"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="24sp"
-            android:textStyle="bold|italic" />
+            android:textStyle="italic"
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/Ans3"
@@ -90,15 +128,15 @@
         <TextView
             android:id="@+id/Que4"
             android:layout_width="match_parent"
-            android:layout_height="67dp"
-            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:clickable="true"
             android:focusable="true"
             android:onClick="Que4Clicked"
             android:text="@string/Que4"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="24sp"
-            android:textStyle="bold|italic" />
+            android:textStyle="italic"
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/Ans4"
@@ -112,14 +150,14 @@
             android:id="@+id/Que5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:clickable="true"
             android:focusable="true"
             android:onClick="Que5Clicked"
             android:text="@string/Que5"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="24sp"
-            android:textStyle="bold|italic" />
+            android:textStyle="italic"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/Ans5"
@@ -133,13 +171,13 @@
             android:id="@+id/Que6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:clickable="true"
             android:onClick="Que6Clicked"
             android:text="@string/Que6"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="24sp"
-            android:textStyle="bold|italic"
+            android:textStyle="italic"
+            android:textSize="20sp"
             android:focusable="true" />
 
         <TextView
@@ -150,6 +188,6 @@
             android:textSize="24sp"
             android:visibility="gone" />
 
-
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
