@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -28,6 +30,9 @@ public class OrderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes tite bar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         setContentView(R.layout.order_activity);
         date=findViewById(R.id.date);
         Calendar cal= Calendar.getInstance();
@@ -56,15 +61,15 @@ public class OrderActivity extends AppCompatActivity {
                 CheckBox s3=(CheckBox)findViewById(R.id.checkbox1);
                 if(s1.isChecked())
                 {
-                    summ="3L   Bottle  ="+q1+"\n";
+                    summ="3L bottle - "+q1+"\n";
                 }
                 if(s2.isChecked())
                 {
-                    summ=summ+"5L   bottle="+q2+"\n";
+                    summ=summ+"5L bottle - "+q2+"\n";
                 }
                 if(s3.isChecked())
                 {
-                    summ=summ+"10L   bottle="+q3;
+                    summ=summ+"10L bottle - "+q3;
                 }
                 sumtxt.setText(summ);
             }
@@ -79,7 +84,7 @@ public class OrderActivity extends AppCompatActivity {
         q1=q1+1;
         display1(q1);
     }
-    public void  decrement1(View view) {
+    public void decrement1(View view) {
         if (q1 != 0) {
             q1 = q1 - 1;
             display1(q1);
@@ -134,11 +139,11 @@ public class OrderActivity extends AppCompatActivity {
         }
         if(c2.isChecked())
         {
-            amt=amt+20*q2;
+            amt=amt+30*q2;
         }
         if(c3.isChecked())
         {
-            amt=amt+20*q3;
+            amt=amt+50*q3;
         }
         displayamt(amt);
     }
