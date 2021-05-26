@@ -37,4 +37,14 @@
     <string name="showPassword">Show Password</string>
     <string name="underDevelopement">Under Developement</string>
     <string name="userProfile">User Profile</string>
+    <string name="Que1">If i am unavailable on the scheduled date, What will Happen?</string>
+    <string name="Ans1">We will deliver it next day and if not available for long days, we suggest to cancle the order.</string>
+    <string name="Que2">Is there any cancellation Charges?</string>
+    <string name="Ans2">No, there are no charges for cancellation.</string>
+    <string name="Que3">Can I pay cash on delivery?</string>
+    <string name="Ans3">Yes, we accept cash on delivery.</string>
+    <string name="Que4">Should I pay tips to delivery boys?</string>
+    <string name="Ans4">No,We do not recommend paying tips to our delivery boys.</string>
+    <string name="Que5">Can we place order for functions?</string>
+    <string name="Ans5">Yes, we will take large order. You just have to place the order with number of cans required few days before.</string>
 </resources>
