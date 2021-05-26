@@ -27,7 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SignUpActivity extends AppCompatActivity {
 
 
-    private static final String USER ="User" ;
+    private static final String USER ="User";
     private EditText inputFullName,inputHomeAddress,inputMobileNo,inputEmail,inputPassword,inputConfirmPassword;
     private Button signUpButton;
     private ProgressDialog loadingBar;
@@ -50,7 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes tite bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes title bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_sign_up);

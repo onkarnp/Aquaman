@@ -99,14 +99,13 @@
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="5dp"
-                    android:src="@drawable/water1"
+                    android:src="@drawable/water2"
                     android:layout_marginEnd="5dp" />
 
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-
                     android:layout_weight="1"
                     android:text="3L"
                     android:textAllCaps="true"
@@ -295,6 +294,7 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="60dp">
                 <Button
+                    android:id="@+id/totAmountButton"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:text="Total amount"
@@ -332,10 +332,10 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="50dp">
                 <Button
+                    android:id="@+id/summarybtn"
                     android:layout_width="175dp"
                     android:layout_height="40dp"
                     android:text="@string/order_summary"
-                    android:id="@+id/sumbtn"
                     android:textColor="#000000"
                     app:backgroundTint="#FFFFFF"
                     android:background="@drawable/button_bg"/>
@@ -360,6 +360,7 @@
                 android:background="@drawable/button_bg">
 
                 <Button
+                    android:id="@+id/placeOrderButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/place_order"

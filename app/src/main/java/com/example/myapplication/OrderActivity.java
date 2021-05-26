@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -12,31 +13,51 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.lang.*;
 
 public class OrderActivity extends AppCompatActivity {
-    int q1=0,q2=0,q3=0,amt=0,year,day,month;
-    EditText date;
-    String summ;
+    private int q1=0,q2=0,q3=0,amt=0,year,day,month;
+    private String summ;
+    private String status = "Pending";
+    private EditText date;
+    private TextView price;
+    private TextView summary;
+    private ProgressDialog loadingBar;
+    private Button placeOrderButton,summarybtn;
+
     private FirebaseAuth mAuth;
-    FirebaseDatabase database;
+    FirebaseDatabase rootNode;
     DatabaseReference reference;
 
+    public OrderActivity(EditText date,TextView price,TextView summary){
+        this.date = date;
+        this.price = price;
+        this.summary = summary;
+    }
+    public OrderActivity(){
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes tite bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes title bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.order_activity);
-        date=findViewById(R.id.date);
+
+        date = (EditText) findViewById(R.id.date);
+        price = (TextView) findViewById(R.id.price);
+        summarybtn=(Button)findViewById((R.id.summarybtn));
+        placeOrderButton = (Button)findViewById(R.id.placeOrderButton);
+        TextView sumtxt=(TextView)findViewById(R.id.summary);
         Calendar cal= Calendar.getInstance();
         date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,8 +74,7 @@ public class OrderActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-        Button summarybtn=(Button)findViewById((R.id.sumbtn));
-        TextView sumtxt=(TextView)findViewById(R.id.summary);
+
         summarybtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,9 +96,36 @@ public class OrderActivity extends AppCompatActivity {
                 sumtxt.setText(summ);
             }
         });
-        database=FirebaseDatabase.getInstance();
+
+        placeOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String date = date.getText().toString();
+                String price =price.toString();
+                String summary = summary.toString();
+                String status = "Pending";
+                loadingBar.setTitle("Place order");
+                loadingBar.setMessage("Your order is being placed...");
+                loadingBar.setCanceledOnTouchOutside(false);
+                loadingBar.show();
+                rootNode = FirebaseDatabase.getInstance();
+                String userID = mAuth.getCurrentUser().getUid();
+                reference = rootNode.getReference("orders");
+                Order order = new Order(date,price,summary,status);
+                reference.child(date).child(userID).setValue(order);
+                loadingBar.dismiss();
+                Toast.makeText(OrderActivity.this, "Order placed successfully :)", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
     }
+
+
+
+
+
 
 
     public void increment1(View view)
@@ -95,7 +142,7 @@ public class OrderActivity extends AppCompatActivity {
     private void display1(int a)
     {
         TextView t1=(TextView)findViewById(R.id.quantity1);
-        t1.setText(a);
+        t1.setText(""+a);
     }
     public void increment2(View view)
     {
@@ -111,7 +158,7 @@ public class OrderActivity extends AppCompatActivity {
     private void display2(int a)
     {
         TextView t1=(TextView)findViewById(R.id.quantity2);
-        t1.setText(a);
+        t1.setText(""+a);
     }
     public void increment3(View view)
     {
@@ -127,11 +174,10 @@ public class OrderActivity extends AppCompatActivity {
     private void display3(int a)
     {
         TextView t1=(TextView)findViewById(R.id.quantity3);
-        t1.setText(a);
+        t1.setText(""+a);
     }
     public void amount(View view)
     {
-        amt=0;
         CheckBox c1=(CheckBox)findViewById(R.id.checkbox1);
         CheckBox c2=(CheckBox)findViewById(R.id.checkbox2);
         CheckBox c3=(CheckBox)findViewById(R.id.checkbox3);
@@ -152,7 +198,7 @@ public class OrderActivity extends AppCompatActivity {
     private void displayamt(int a)
     {
         TextView t1=(TextView)findViewById(R.id.price);
-        t1.setText(a);
+        t1.setText(""+a);
     }
 
 

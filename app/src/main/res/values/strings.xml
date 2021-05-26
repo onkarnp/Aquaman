@@ -35,7 +35,7 @@
     <string name="doNotHaveAnAccount">Do not have an account?</string>
     <string name="notRegisteredYet">Not registered yet?</string>
     <string name="showPassword">Show Password</string>
-    <string name="underDevelopement">Under Developement</string>
+    <string name="underDevelopement">Under Development</string>
     <string name="userProfile">User Profile</string>
     <string name="Que1">1. Is there any cancellation charges?</string>
     <string name="Ans1">No, there are not any cancellation charges.</string>
@@ -51,6 +51,6 @@
     <string name="Ans6">We will provide the delivery within 6 to 7 hours</string>
     <string name="order_summary">Order Summary</string>
     <string name="placeOrder">Place Order</string>
-    <string name="select_date">Select Date</string>
+    <string name="select_date">Select delivery date</string>
     <string name="place_order">Place Order</string>
 </resources>
