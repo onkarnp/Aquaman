@@ -35,6 +35,10 @@
     <string name="doNotHaveAnAccount">Do not have an account?</string>
     <string name="notRegisteredYet">Not registered yet?</string>
     <string name="showPassword">Show Password</string>
-    <string name="underDevelopement">Under Developement</string>
+    <string name="underDevelopement">Under Development</string>
     <string name="userProfile">User Profile</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="placeOrder">Place Order</string>
+    <string name="select_date">Select Date</string>
+    <string name="place_order">Place Order</string>
 </resources>
