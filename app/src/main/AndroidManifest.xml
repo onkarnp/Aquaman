@@ -14,6 +14,7 @@
         <activity android:name=".OrderActivity" />
         <activity android:name=".LogInActivity" />
         <activity android:name=".Dashboard" />
+        <activity android:name=".FAQpage" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
