@@ -37,4 +37,16 @@
     <string name="showPassword">Show Password</string>
     <string name="underDevelopement">Under Developement</string>
     <string name="userProfile">User Profile</string>
+    <string name="Que1">1. Is there any cancellation charges?</string>
+    <string name="Ans1">No, there are not any cancellation charges.</string>
+    <string name="Que2">2. If I am unavailable on the scheduled date, What will happen?</string>
+    <string name="Ans2">We will deliver the can next day. If not available for long duration, we suggest to cancle the order.</string>
+    <string name="Que3">3. Can I pay cash on delivery?</string>
+    <string name="Ans3">Yes, we accept cash on delivery.</string>
+    <string name="Que4">4. Should I pay tips to delivery boys?</string>
+    <string name="Ans4">No, we do not recommend paying tips to our delivery boys.</string>
+    <string name="Que5">5. Can we place large orders for functions?</string>
+    <string name="Ans5">Yes, but you have to place order for it few days before the scheduled date.</string>
+    <string name="Que6">6. What is the expected delivery time?</string>
+    <string name="Ans6">We will provide the delivery within 6 to 7 hours</string>
 </resources>

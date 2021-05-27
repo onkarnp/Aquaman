@@ -60,7 +60,7 @@ public class Dashboard extends AppCompatActivity {
         faqCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Profile.class);
+                Intent intent = new Intent(getApplicationContext(),FAQpage.class);
                 startActivity(intent);
             }
         });
@@ -92,7 +92,5 @@ public class Dashboard extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 }

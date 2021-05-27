@@ -1,42 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp"
     android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
     tools:context=".FAQpage">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FAQ"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
 
         <TextView
             android:id="@+id/Que1"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:clickable="true"
+            android:onClick="Que1Clicked"
             android:text="@string/Que1"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="24sp"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold|italic"
+            android:focusable="true" />
 
         <TextView
             android:id="@+id/Ans1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Ans1"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/Que2"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="Que2Clicked"
             android:text="@string/Que2"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="24sp"
@@ -47,13 +63,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Ans2"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/Que3"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="Que3Clicked"
             android:text="@string/Que3"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="24sp"
@@ -64,13 +84,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Ans3"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/Que4"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="67dp"
             android:layout_marginTop="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="Que4Clicked"
             android:text="@string/Que4"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="24sp"
@@ -81,13 +105,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Ans4"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/Que5"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="Que5Clicked"
             android:text="@string/Que5"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="24sp"
@@ -96,9 +124,32 @@
         <TextView
             android:id="@+id/Ans5"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:text="@string/Ans5"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/Que6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:clickable="true"
+            android:onClick="Que6Clicked"
+            android:text="@string/Que6"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/Ans6"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="@string/Ans6"
+            android:textSize="24sp"
+            android:visibility="gone" />
+
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
