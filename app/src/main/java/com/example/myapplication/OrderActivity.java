@@ -27,18 +27,24 @@ public class OrderActivity extends AppCompatActivity {
     private int q1=0,q2=0,q3=0,amt=0,year,day,month;
     private String summ;
     private String status = "Pending";
-    private EditText date;
+    private EditText date1;
     private TextView price;
     private TextView summary;
     private ProgressDialog loadingBar;
     private Button placeOrderButton,summarybtn;
+    TextView t1;
 
     private FirebaseAuth mAuth;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+    private void displayamt(int a)
+    {
+        TextView t1=(TextView)findViewById(R.id.price);
+        t1.setText(""+a);
+    }
 
-    public OrderActivity(EditText date,TextView price,TextView summary){
-        this.date = date;
+    public OrderActivity(EditText date1,TextView price,TextView summary){
+        this.date1 = date1;
         this.price = price;
         this.summary = summary;
     }
@@ -53,13 +59,13 @@ public class OrderActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.order_activity);
 
-        date = (EditText) findViewById(R.id.date);
+        date1 = (EditText) findViewById(R.id.date);
         price = (TextView) findViewById(R.id.price);
         summarybtn=(Button)findViewById((R.id.summarybtn));
         placeOrderButton = (Button)findViewById(R.id.placeOrderButton);
         TextView sumtxt=(TextView)findViewById(R.id.summary);
         Calendar cal= Calendar.getInstance();
-        date.setOnClickListener(new View.OnClickListener() {
+        date1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 year=cal.get(Calendar.YEAR);
@@ -68,7 +74,7 @@ public class OrderActivity extends AppCompatActivity {
                 DatePickerDialog datePickerDialog=new DatePickerDialog(OrderActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        date.setText(SimpleDateFormat.getDateInstance().format(cal.getTime()));
+                        date1.setText(SimpleDateFormat.getDateInstance().format(cal.getTime()));
                     }
                 },year,month,day);
                 datePickerDialog.show();
@@ -100,9 +106,9 @@ public class OrderActivity extends AppCompatActivity {
         placeOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String date = date.getText().toString();
-                String price =price.toString();
-                String summary = summary.toString();
+                String date = date1.getText().toString();
+                String price =t1.getText().toString();
+                String summary = summ;
                 String status = "Pending";
                 loadingBar.setTitle("Place order");
                 loadingBar.setMessage("Your order is being placed...");
@@ -195,11 +201,7 @@ public class OrderActivity extends AppCompatActivity {
         }
         displayamt(amt);
     }
-    private void displayamt(int a)
-    {
-        TextView t1=(TextView)findViewById(R.id.price);
-        t1.setText(""+a);
-    }
+
 
 
 
