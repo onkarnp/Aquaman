@@ -49,4 +49,8 @@
     <string name="Ans5">Yes, but you have to place order for it few days before the scheduled date.</string>
     <string name="Que6">6. What is the expected delivery time?</string>
     <string name="Ans6">We will provide the delivery within 6 to 7 hours</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="placeOrder">Place Order</string>
+    <string name="select_date">Select Date</string>
+    <string name="place_order">Place Order</string>
 </resources>

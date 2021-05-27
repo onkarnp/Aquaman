@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -24,8 +25,9 @@ public class OrderActivity extends AppCompatActivity {
     int q1=0,q2=0,q3=0,amt=0,year,day,month;
     EditText date;
     String summ;
+    private FirebaseAuth mAuth;
     FirebaseDatabase database;
-    DatabaseReference orderref;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +59,8 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 CheckBox s1=(CheckBox)findViewById(R.id.checkbox1);
-                CheckBox s2=(CheckBox)findViewById(R.id.checkbox1);
-                CheckBox s3=(CheckBox)findViewById(R.id.checkbox1);
+                CheckBox s2=(CheckBox)findViewById(R.id.checkbox2);
+                CheckBox s3=(CheckBox)findViewById(R.id.checkbox3);
                 if(s1.isChecked())
                 {
                     summ="3L bottle - "+q1+"\n";
@@ -93,7 +95,7 @@ public class OrderActivity extends AppCompatActivity {
     private void display1(int a)
     {
         TextView t1=(TextView)findViewById(R.id.quantity1);
-        t1.setText(""+a);
+        t1.setText(a);
     }
     public void increment2(View view)
     {
@@ -109,7 +111,7 @@ public class OrderActivity extends AppCompatActivity {
     private void display2(int a)
     {
         TextView t1=(TextView)findViewById(R.id.quantity2);
-        t1.setText(""+a);
+        t1.setText(a);
     }
     public void increment3(View view)
     {
@@ -125,7 +127,7 @@ public class OrderActivity extends AppCompatActivity {
     private void display3(int a)
     {
         TextView t1=(TextView)findViewById(R.id.quantity3);
-        t1.setText(""+a);
+        t1.setText(a);
     }
     public void amount(View view)
     {
@@ -150,7 +152,7 @@ public class OrderActivity extends AppCompatActivity {
     private void displayamt(int a)
     {
         TextView t1=(TextView)findViewById(R.id.price);
-        t1.setText(""+a);
+        t1.setText(a);
     }
 
 

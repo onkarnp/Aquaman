@@ -134,7 +134,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     String userID = mAuth.getCurrentUser().getUid();
                                     reference = rootNode.getReference("users");
                                     //get all the values
-                                    User user = new User(fullName,homeAddress,mobileNo,email,password);
+                                    User user = new User(fullName,homeAddress,mobileNo,email);
                                     reference.child(userID).setValue(user);
                                     Toast.makeText(SignUpActivity.this, "Registered successfully !!", Toast.LENGTH_SHORT).show();
                                     loadingBar.dismiss();
