@@ -53,4 +53,5 @@
     <string name="select_date">Select delivery date</string>
     <string name="place_order">Place Order</string>
     <string name="AboutUs">About Us</string>
+    <string name="_0">0</string>
 </resources>

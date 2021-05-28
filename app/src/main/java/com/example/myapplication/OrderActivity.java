@@ -24,64 +24,95 @@ import java.util.Calendar;
 import java.lang.*;
 
 public class OrderActivity extends AppCompatActivity {
-    private int q1=0,q2=0,q3=0,amt=0,year,day,month;
+
+    private int q1=0,q2=0,q3=0,amt=0;
     private String summ;
     private String status = "Pending";
-    private EditText date1;
-    private TextView price;
-    private TextView summary;
+    private EditText date;
+    private TextView price,summary;
     private ProgressDialog loadingBar;
-    private Button placeOrderButton,summarybtn;
     TextView t1;
 
+    //Initiation of Firebase attributes
     private FirebaseAuth mAuth;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
-    private void displayamt(int a)
-    {
-        TextView t1=(TextView)findViewById(R.id.price);
-        t1.setText(""+a);
-    }
 
+    //Constructors for class
     public OrderActivity(EditText date1,TextView price,TextView summary){
-        this.date1 = date1;
+        this.date = date;
         this.price = price;
         this.summary = summary;
     }
     public OrderActivity(){
 
     }
+
+    //On create method
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes title bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
+        getSupportActionBar().hide();                    //hides action bar
         setContentView(R.layout.order_activity);
 
-        date1 = (EditText) findViewById(R.id.date);
+        Button placeOrderButton = findViewById(R.id.placeOrderButton);
+        Button summaryButton = findViewById(R.id.summaryButton);
+        Button totAmountButton = findViewById(R.id.totAmountButton);
+        date = (EditText) findViewById(R.id.date);
         price = (TextView) findViewById(R.id.price);
-        summarybtn=(Button)findViewById((R.id.summarybtn));
-        placeOrderButton = (Button)findViewById(R.id.placeOrderButton);
-        TextView sumtxt=(TextView)findViewById(R.id.summary);
+        loadingBar = new ProgressDialog(this);
+        TextView sumtxt = (TextView)findViewById(R.id.summary);
         Calendar cal= Calendar.getInstance();
-        date1.setOnClickListener(new View.OnClickListener() {
+
+        date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                year=cal.get(Calendar.YEAR);
-                month=cal.get(Calendar.MONTH);
-                day=cal.get(Calendar.DAY_OF_MONTH);
+                int year=cal.get(Calendar.YEAR);
+                int month=cal.get(Calendar.MONTH);
+                int day=cal.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog=new DatePickerDialog(OrderActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        date1.setText(SimpleDateFormat.getDateInstance().format(cal.getTime()));
+                        date.setText(SimpleDateFormat.getDateInstance().format(cal.getTime()));
                     }
                 },year,month,day);
+                //Disables past date
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
+                //Show date picker dialog
                 datePickerDialog.show();
             }
         });
 
-        summarybtn.setOnClickListener(new View.OnClickListener() {
+
+        totAmountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CheckBox c1=(CheckBox)findViewById(R.id.checkbox1);
+                CheckBox c2=(CheckBox)findViewById(R.id.checkbox2);
+                CheckBox c3=(CheckBox)findViewById(R.id.checkbox3);
+                price = (TextView) findViewById(R.id.price);
+                amt=0;
+                if(c1.isChecked())
+                {
+                    amt=amt+20*q1;
+                }
+                if(c2.isChecked())
+                {
+                    amt=amt+30*q2;
+                }
+                if(c3.isChecked())
+                {
+                    amt=amt+50*q3;
+                }
+                final String s = ""+amt;
+                price.setText(s);
+            }
+        });
+
+
+        summaryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CheckBox s1=(CheckBox)findViewById(R.id.checkbox1);
@@ -103,34 +134,29 @@ public class OrderActivity extends AppCompatActivity {
             }
         });
 
+
         placeOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String date = date1.getText().toString();
-                String price =t1.getText().toString();
-                String summary = summ;
-                String status = "Pending";
                 loadingBar.setTitle("Place order");
                 loadingBar.setMessage("Your order is being placed...");
                 loadingBar.setCanceledOnTouchOutside(false);
                 loadingBar.show();
+                String dateString = date.getText().toString();
+                String priceString =price.getText().toString();
+                String summary = summ;
+                String status = "Pending";
                 rootNode = FirebaseDatabase.getInstance();
+                mAuth= FirebaseAuth.getInstance();
                 String userID = mAuth.getCurrentUser().getUid();
                 reference = rootNode.getReference("orders");
-                Order order = new Order(date,price,summary,status);
-                reference.child(date).child(userID).setValue(order);
+                Order order = new Order(dateString,priceString,summary,status);
+                reference.child(dateString).child(userID).setValue(order);
                 loadingBar.dismiss();
                 Toast.makeText(OrderActivity.this, "Order placed successfully :)", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
     }
-
-
-
-
 
 
 
@@ -182,25 +208,7 @@ public class OrderActivity extends AppCompatActivity {
         TextView t1=(TextView)findViewById(R.id.quantity3);
         t1.setText(""+a);
     }
-    public void amount(View view)
-    {
-        CheckBox c1=(CheckBox)findViewById(R.id.checkbox1);
-        CheckBox c2=(CheckBox)findViewById(R.id.checkbox2);
-        CheckBox c3=(CheckBox)findViewById(R.id.checkbox3);
-        if(c1.isChecked())
-        {
-            amt=amt+20*q1;
-        }
-        if(c2.isChecked())
-        {
-            amt=amt+30*q2;
-        }
-        if(c3.isChecked())
-        {
-            amt=amt+50*q3;
-        }
-        displayamt(amt);
-    }
+
 
 
 

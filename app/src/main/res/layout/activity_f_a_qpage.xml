@@ -17,7 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@drawable/dashboard_image"
-            android:padding="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -33,11 +32,11 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginStart="76dp"
-                android:layout_marginLeft="76dp"
+                android:layout_marginTop="30dp"
                 android:contentDescription="@string/FAQ"
                 android:src="@drawable/faq"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,16 +44,14 @@
                 android:id="@+id/faqText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/wellfleet"
                 android:text="@string/FAQ"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/faqIcon"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/faqIcon" />
         </androidx.constraintlayout.widget.ConstraintLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,7 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Ans1"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:visibility="gone" />
 
         <TextView
@@ -101,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Ans2"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:visibility="gone" />
 
         <TextView
@@ -122,7 +119,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Ans3"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:visibility="gone" />
 
         <TextView
@@ -143,7 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Ans4"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:visibility="gone" />
 
         <TextView
@@ -164,7 +161,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Ans5"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:visibility="gone" />
 
         <TextView
@@ -185,7 +182,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:text="@string/Ans6"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:visibility="gone" />
 
         </LinearLayout>
