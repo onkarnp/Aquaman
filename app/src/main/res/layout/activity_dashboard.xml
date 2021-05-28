@@ -294,17 +294,18 @@
                         android:id="@+id/contactIcon"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:contentDescription="@string/contactIcon"
-                        android:src="@drawable/contact_us" />
+                        android:contentDescription="@string/profileIcon"
+                        android:src="@drawable/profile1" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
-                        android:contentDescription="@string/Contact"
-                        android:text="@string/Contact"
+                        android:contentDescription="@string/AboutUs"
+                        android:text="@string/AboutUs"
                         android:textColor="#0353F4"
                         android:textSize="20sp" />
+
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
