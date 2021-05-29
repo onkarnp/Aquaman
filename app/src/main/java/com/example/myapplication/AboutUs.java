@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.annotation.SuppressLint;
-import android.provider.CalendarContract;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
@@ -26,7 +25,7 @@ public class AboutUs extends AppCompatActivity {
         Element adsElement = new Element();
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
-                .setImage(R.drawable.contact_us)
+                .setImage(R.drawable.about_us)
                 .setDescription("This app solely developed to make mineral water distribution easy and make clean mineral water available for everyone...")
                 .addItem(new Element().setTitle("Version 1.0"))
                 .addGroup("CONNECT WITH US!")
