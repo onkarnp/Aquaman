@@ -8,7 +8,6 @@ import android.annotation.SuppressLint;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
-
 import java.util.Calendar;
 
 import mehdi.sakout.aboutpage.AboutPage;
@@ -44,7 +43,7 @@ public class AboutUs extends AppCompatActivity {
         Element copyright = new Element();
         @SuppressLint("DefaultLocale") final String copyrightString = String.format("Copyright %d by Aquaman", Calendar.getInstance().get(Calendar.YEAR));
         copyright.setTitle(copyrightString);
-        copyright.setIconDrawable(R.mipmap.ic_launcher_foreground);
+        copyright.setIconDrawable(R.drawable.ic_copyright);
         copyright.setGravity(Gravity.CENTER);
         copyright.setOnClickListener(new View.OnClickListener() {
             @Override
