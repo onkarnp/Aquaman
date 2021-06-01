@@ -30,8 +30,8 @@ public class AboutUs extends AppCompatActivity {
                 .addItem(new Element().setTitle("Version 1.0"))
                 .addGroup("CONNECT WITH US!")
                 .addEmail("Grno24technologies@gmail.com")
-                .addYoutube("UCbekhhidkzkGryM7miSYs_w")   //Enter your youtube link here (replace with my channel link)
-                .addPlayStore("com.example.myapplication")   //Replace all this with your package name
+                .addYoutube("UCbekhhidkzkGryM7miSYs_w")
+                .addPlayStore("com.example.myapplication")
                 .addInstagram("pranav_sp_309")
                 .addFacebook("Pranav Pawar")
                 .addTwitter("Your Twitter id")
