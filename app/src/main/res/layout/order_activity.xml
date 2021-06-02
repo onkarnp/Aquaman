@@ -56,7 +56,20 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="10dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:background="@drawable/dashboard_image">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delivery time: \nMorning: 7:30AM to 8:30AM\nEvening: 5:00PM to 6:30PM"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:textColor="#FFFFFFFF" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

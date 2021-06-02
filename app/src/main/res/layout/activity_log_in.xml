@@ -111,15 +111,16 @@
             android:id="@+id/forgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="end"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
+            android:padding="10dp"
             android:text="@string/forgotPassword"
             android:textAlignment="viewEnd"
             android:textColor="#9C27B0"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/LoginButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_gravity="end" />
+            app:layout_constraintEnd_toEndOf="parent" />
     </LinearLayout>
 
     <Button
