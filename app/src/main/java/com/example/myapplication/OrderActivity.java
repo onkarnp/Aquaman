@@ -76,7 +76,9 @@ public class OrderActivity extends AppCompatActivity {
                 DatePickerDialog datePickerDialog=new DatePickerDialog(OrderActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        date.setText(SimpleDateFormat.getDateInstance().format(cal.getTime()));
+                        month=month+1;
+                        String d=dayOfMonth+"-"+month+"-"+ year;
+                        date.setText(d);
                     }
                 },year,month,day);
                 //Disables past date
