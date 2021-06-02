@@ -54,4 +54,5 @@
     <string name="place_order">Place Order</string>
     <string name="AboutUs">About Us</string>
     <string name="_0">0</string>
+    <string name="enter_delivery_address">Enter Delivery Address</string>
 </resources>

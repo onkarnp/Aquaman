@@ -1,16 +1,17 @@
 package com.example.myapplication;
 
 public class Order {
-    private String date, price, summary, status = "Pending";
+    private String date, price, summary, status = "Pending", address;
     Order(){
 
     }
 
-    public Order(String date, String price, String summary, String status) {
+    public Order(String date, String price, String summary, String status, String address) {
         this.date = date;
         this.price = price;
         this.summary = summary;
         this.status = status;
+        this.address = address;
     }
 
     public String getDate() {
@@ -43,5 +44,13 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

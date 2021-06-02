@@ -28,7 +28,7 @@ public class OrderActivity extends AppCompatActivity {
     private int q1=0,q2=0,q3=0,amt=0;
     private String summ;
     private String status = "Pending";
-    private EditText date;
+    private EditText date,address;
     private TextView price,summary;
     private ProgressDialog loadingBar;
     TextView t1;
@@ -61,6 +61,7 @@ public class OrderActivity extends AppCompatActivity {
         Button summaryButton = findViewById(R.id.summaryButton);
         Button totAmountButton = findViewById(R.id.totAmountButton);
         date = (EditText) findViewById(R.id.date);
+        address = (EditText) findViewById(R.id.inputDeliveryAddress);
         price = (TextView) findViewById(R.id.price);
         loadingBar = new ProgressDialog(this);
         TextView sumtxt = (TextView)findViewById(R.id.summary);
@@ -143,14 +144,15 @@ public class OrderActivity extends AppCompatActivity {
                 loadingBar.setCanceledOnTouchOutside(false);
                 loadingBar.show();
                 String dateString = date.getText().toString();
-                String priceString =price.getText().toString();
+                String priceString = price.getText().toString();
+                String addressString = address.getText().toString();
                 String summary = summ;
                 String status = "Pending";
                 rootNode = FirebaseDatabase.getInstance();
                 mAuth= FirebaseAuth.getInstance();
                 String userID = mAuth.getCurrentUser().getUid();
                 reference = rootNode.getReference("orders");
-                Order order = new Order(dateString,priceString,summary,status);
+                Order order = new Order(dateString,priceString,summary,status,addressString);
                 reference.child(dateString).child(userID).setValue(order);
                 loadingBar.dismiss();
                 Toast.makeText(OrderActivity.this, "Order placed successfully :)", Toast.LENGTH_SHORT).show();
