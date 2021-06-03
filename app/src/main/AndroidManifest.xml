@@ -15,6 +15,7 @@
         <activity android:name=".LogInActivity" />
         <activity android:name=".Dashboard" />
         <activity android:name=".FAQpage" />
+        <activity android:name=".HistoryActivity" />
         <activity android:name=".AboutUs" />
         <activity android:name=".MainActivity">
             <intent-filter>
