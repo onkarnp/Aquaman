@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -28,10 +29,11 @@ public class OrderActivity extends AppCompatActivity {
     private int q1=0,q2=0,q3=0,amt=0;
     private String summ;
     private String status = "Pending";
-    private EditText date,address;
+    private EditText date,address,fullName;
     private TextView price,summary;
     private ProgressDialog loadingBar;
     TextView t1;
+
 
     //Initiation of Firebase attributes
     private FirebaseAuth mAuth;
@@ -39,7 +41,7 @@ public class OrderActivity extends AppCompatActivity {
     DatabaseReference reference;
 
     //Constructors for class
-    public OrderActivity(EditText date1,TextView price,TextView summary){
+    public OrderActivity(EditText date,TextView price,TextView summary){
         this.date = date;
         this.price = price;
         this.summary = summary;
@@ -63,6 +65,7 @@ public class OrderActivity extends AppCompatActivity {
         date = (EditText) findViewById(R.id.date);
         address = (EditText) findViewById(R.id.inputDeliveryAddress);
         price = (TextView) findViewById(R.id.price);
+        fullName = (EditText) findViewById((R.id.inputFullName));
         loadingBar = new ProgressDialog(this);
         TextView sumtxt = (TextView)findViewById(R.id.summary);
         Calendar cal= Calendar.getInstance();
@@ -148,16 +151,19 @@ public class OrderActivity extends AppCompatActivity {
                 String dateString = date.getText().toString();
                 String priceString = price.getText().toString();
                 String addressString = address.getText().toString();
+                String fullNameString = fullName.getText().toString();
                 String summary = summ;
                 String status = "Pending";
                 rootNode = FirebaseDatabase.getInstance();
                 mAuth= FirebaseAuth.getInstance();
                 String userID = mAuth.getCurrentUser().getUid();
                 reference = rootNode.getReference("orders");
-                Order order = new Order(dateString,priceString,summary,status,addressString);
+                Order order = new Order(dateString,priceString,summary,status,addressString,fullNameString);
                 reference.child(dateString).child(userID).setValue(order);
                 loadingBar.dismiss();
                 Toast.makeText(OrderActivity.this, "Order placed successfully :)", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(),Dashboard.class);
+                startActivity(intent);
             }
         });
     }
