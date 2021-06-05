@@ -27,7 +27,7 @@ public class AboutUs extends AppCompatActivity {
                 .setImage(R.drawable.about_us)
                 .setDescription("This app solely developed to make mineral water distribution easy and make clean mineral water available for everyone...")
                 .addItem(new Element().setTitle("Version 1.0"))
-                .addGroup("CONNECT WITH US!")
+                .addGroup("CONNECT WITH US !")
                 .addEmail("Grno24technologies@gmail.com")
                 .addYoutube("UCbekhhidkzkGryM7miSYs_w")
                 .addPlayStore("com.example.myapplication")

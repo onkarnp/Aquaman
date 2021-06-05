@@ -1,17 +1,23 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Dashboard extends AppCompatActivity {
 
-    public CardView profileCard,orderCard,historyCard,profile1Card,faqCard,contactCard,contact1Card,logOutCard;
+    public CardView profileCard,orderCard,historyCard,faqCard,aboutUsCard,logOutCard;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,14 +53,7 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-        profile1Card = (CardView)findViewById(R.id.profile1Card);
-        profile1Card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Profile.class);
-                startActivity(intent);
-            }
-        });
+
 
         faqCard = (CardView)findViewById(R.id.faqCard);
         faqCard.setOnClickListener(new View.OnClickListener() {
@@ -65,8 +64,8 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-        contactCard= (CardView)findViewById(R.id.contactCard);
-        contactCard.setOnClickListener(new View.OnClickListener() {
+        aboutUsCard= (CardView)findViewById(R.id.aboutUsCard);
+        aboutUsCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),AboutUs.class);
@@ -74,23 +73,42 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-        contact1Card = (CardView)findViewById(R.id.contact1Card);
-        contact1Card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Profile.class);
-                startActivity(intent);
-            }
-        });
+
 
         logOutCard = (CardView)findViewById(R.id.logOutCard);
         logOutCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),LogInActivity.class);
-                startActivity(intent);
-                finish();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Dashboard.this);
+                alertDialogBuilder.setTitle("Confirm Exit..!!");
+                alertDialogBuilder.setIcon(R.drawable.ic_exit);
+                alertDialogBuilder.setMessage("Are you sure ?");
+                alertDialogBuilder.setCancelable(false);
+                alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(getApplicationContext(),LogInActivity.class);
+                        mAuth.signOut();
+                        startActivity(intent);
+                        Toast.makeText(Dashboard.this,"Logged out successfully",Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                });
+                alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(Dashboard.this,"Cancelled..",Toast.LENGTH_LONG).show();
+                    }
+                });
+                alertDialogBuilder.show();
             }
         });
     }
+
 }
+
+
+
+
+
+

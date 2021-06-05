@@ -49,6 +49,9 @@ public class LogInActivity extends AppCompatActivity {
         forgotPassword = findViewById(R.id.forgotPassword);
         loadingBar = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() != null){
+            startActivity(new Intent(LogInActivity.this,Dashboard.class));
+        }
 
         LogInButton.setOnClickListener(new View.OnClickListener(){
             @Override
