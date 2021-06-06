@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
 public class Order {
-    private String date, price, summary, status = "Pending", address, name;
+    private String date, price, summary, status, address, name;
     Order(){
 
     }

@@ -1,20 +1,16 @@
 package com.example.myapplication;
 
-import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Order;
-import com.example.myapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,12 +19,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity
 {
     private ListView listView;
+    private List<Order> list;
     private FirebaseAuth mAuth;
+    DatabaseReference reference= FirebaseDatabase.getInstance().getReference("orders");
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,16 +37,15 @@ public class HistoryActivity extends AppCompatActivity
         getSupportActionBar().hide();                    //hides action bar
         setContentView(R.layout.activity_history);
         Button History=findViewById(R.id.historybutton);
-        listView=findViewById(R.id.list);
-        ArrayList<String> list=new ArrayList<>();
-        ArrayAdapter adapter=new ArrayAdapter<String>(this,R.layout.list_item,list);
-        listView.setAdapter(adapter);
+        listView=findViewById(R.id.listView);
+        list= new ArrayList<>();
+        MyAdapter myAdapter = new MyAdapter(this,R.layout.list_item,list);
+        listView.setAdapter(myAdapter);
         History.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mAuth= FirebaseAuth.getInstance();
                 String userID = mAuth.getCurrentUser().getUid();
-                DatabaseReference reference= FirebaseDatabase.getInstance().getReference("orders");
                 reference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot datasnapshot) {
@@ -57,17 +56,15 @@ public class HistoryActivity extends AppCompatActivity
 
                                 String key=snap.getKey();
                                 if (key.equals(userID)) {
-                                    Orderinfo info = snap.getValue(Orderinfo.class);
+                                    Order info = snap.getValue(Order.class);
                                     String s = "Name:" + info.getName() + "\nDate:" + info.getDate() + "\n" + "Price:" + info.getPrice() + "\n" + "Status:" + info.getStatus() + "\n" + "Summary:" + info.getSummary() + "\nAddress:" + info.getAddress();
-                                    list.add(s);
+                                    list.add(new Order(info.getDate(),info.getPrice(),info.getSummary(),info.getStatus(),info.getAddress(),info.getName()));
                                 }
-
-
 
                             }
 
                         }
-                        adapter.notifyDataSetChanged();
+                        myAdapter.notifyDataSetChanged();
 
                     }
 
@@ -78,8 +75,6 @@ public class HistoryActivity extends AppCompatActivity
                 });
             }
         });
-
-
     };
 }
 

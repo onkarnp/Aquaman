@@ -51,6 +51,7 @@ public class LogInActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser() != null){
             startActivity(new Intent(LogInActivity.this,Dashboard.class));
+            finish();
         }
 
         LogInButton.setOnClickListener(new View.OnClickListener(){
