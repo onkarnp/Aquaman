@@ -150,17 +150,20 @@ public class OrderActivity extends AppCompatActivity {
                 loadingBar.show();
                 String dateString = date.getText().toString();
                 if (TextUtils.isEmpty(date.getText())) {
+                    loadingBar.dismiss();
                     date.setError("Please Enter Delivery Date");
                     date.requestFocus();
                 } else {
                     String priceString = price.getText().toString();
                     String addressString = address.getText().toString();
                     if (TextUtils.isEmpty(address.getText())) {
+                        loadingBar.dismiss();
                         address.setError("Please Enter Address");
                         address.requestFocus();
                     } else {
                         String fullNameString = fullName.getText().toString();
                         if (TextUtils.isEmpty(fullName.getText())) {
+                            loadingBar.dismiss();
                             fullName.setError("Please Enter Your Name");
                             fullName.requestFocus();
                         } else {
