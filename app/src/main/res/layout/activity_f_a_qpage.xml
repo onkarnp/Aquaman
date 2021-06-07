@@ -65,19 +65,22 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:clickable="true"
+            android:textColor="@color/black"
             android:onClick="Que1Clicked"
             android:text="@string/Que1"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:focusable="true"
-            android:textStyle="italic"
+            android:textStyle="bold"
             android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/Ans1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="@string/Ans1"
             android:textSize="20sp"
+            android:textStyle="italic"
             android:visibility="gone" />
 
         <TextView
@@ -90,7 +93,8 @@
             android:onClick="Que2Clicked"
             android:text="@string/Que2"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textStyle="italic"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <TextView
@@ -99,6 +103,8 @@
             android:layout_height="wrap_content"
             android:text="@string/Ans2"
             android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="italic"
             android:visibility="gone" />
 
         <TextView
@@ -111,7 +117,8 @@
             android:onClick="Que3Clicked"
             android:text="@string/Que3"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textStyle="italic"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:textSize="20sp"/>
 
         <TextView
@@ -120,6 +127,8 @@
             android:layout_height="wrap_content"
             android:text="@string/Ans3"
             android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="italic"
             android:visibility="gone" />
 
         <TextView
@@ -132,7 +141,8 @@
             android:onClick="Que4Clicked"
             android:text="@string/Que4"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textStyle="italic"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:textSize="20sp"/>
 
         <TextView
@@ -141,6 +151,8 @@
             android:layout_height="wrap_content"
             android:text="@string/Ans4"
             android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="italic"
             android:visibility="gone" />
 
         <TextView
@@ -153,7 +165,8 @@
             android:onClick="Que5Clicked"
             android:text="@string/Que5"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textStyle="italic"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <TextView
@@ -162,6 +175,8 @@
             android:layout_height="wrap_content"
             android:text="@string/Ans5"
             android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="italic"
             android:visibility="gone" />
 
         <TextView
@@ -173,8 +188,9 @@
             android:onClick="Que6Clicked"
             android:text="@string/Que6"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textStyle="italic"
+            android:textStyle="bold"
             android:textSize="20sp"
+            android:textColor="@color/black"
             android:focusable="true" />
 
         <TextView
@@ -182,6 +198,8 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:text="@string/Ans6"
+            android:textColor="@color/white"
+            android:textStyle="italic"
             android:textSize="20sp"
             android:visibility="gone" />
 

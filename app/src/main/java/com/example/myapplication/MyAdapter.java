@@ -10,42 +10,57 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class MyAdapter extends ArrayAdapter<Order> {
-    List<Order> list;
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
+
     Context context;
-    public MyAdapter(@NonNull Context context, int resource, List<Order> list) {
-        super(context, resource);
+    ArrayList<Order> list;
+
+    public MyAdapter(Context context, ArrayList<Order> list) {
         this.context = context;
         this.list = list;
     }
 
-    @Override
-    public int getCount() {
-        return super.getCount();
-    }
-
-
-    @SuppressLint("ViewHolder")
     @NonNull
     @Override
-    public View getView(int position,View convertView,ViewGroup parent) {
-        convertView = LayoutInflater.from(context)
-                .inflate(R.layout.list_item,parent,false);
-        TextView date = convertView.findViewById(R.id.date);
-        TextView name = convertView.findViewById(R.id.name);
-        TextView address = convertView.findViewById(R.id.address);
-        TextView summary = convertView.findViewById(R.id.summary);
-        TextView status = convertView.findViewById(R.id.status);
-        TextView price = convertView.findViewById(R.id.price);
-        date.setText(list.get(position).getDate());
-        name.setText(list.get(position).getName());
-        address.setText(list.get(position).getAddress());
-        summary.setText(list.get(position).getSummary());
-        status.setText(list.get(position).getStatus());
-        price.setText(list.get(position).getPrice());
-        return convertView;
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.list_item,parent,false);
+        return new MyViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        Order order = list.get(position);
+        holder.date.setText(order.getDate());
+        holder.price.setText(order.getPrice());
+        holder.summary.setText(order.getSummary());
+        holder.status.setText(order.getStatus());
+        holder.address.setText(order.getAddress());
+        holder.name.setText(order.getName());
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
+
+        TextView date,price,summary,status,address,name;
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            date = itemView.findViewById(R.id.date);
+            price = itemView.findViewById(R.id.price);
+            summary = itemView.findViewById(R.id.summary);
+            status = itemView.findViewById(R.id.status);
+            address = itemView.findViewById(R.id.address);
+            name = itemView.findViewById(R.id.name);
+        }
     }
 }

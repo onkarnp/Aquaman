@@ -10,6 +10,8 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,8 +25,9 @@ import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity
 {
-    private ListView listView;
-    private List<Order> list;
+    RecyclerView recyclerView;
+    MyAdapter myAdapter;
+    ArrayList<Order> list;
     private FirebaseAuth mAuth;
     DatabaseReference reference= FirebaseDatabase.getInstance().getReference("orders");
 
@@ -36,14 +39,13 @@ public class HistoryActivity extends AppCompatActivity
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();                    //hides action bar
         setContentView(R.layout.activity_history);
-        Button History=findViewById(R.id.historybutton);
-        listView=findViewById(R.id.listView);
+        recyclerView=findViewById(R.id.userList);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list= new ArrayList<>();
-        MyAdapter myAdapter = new MyAdapter(this,R.layout.list_item,list);
-        listView.setAdapter(myAdapter);
-        History.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        myAdapter = new MyAdapter(this,list);
+        recyclerView.setAdapter(myAdapter);
+
                 mAuth= FirebaseAuth.getInstance();
                 String userID = mAuth.getCurrentUser().getUid();
                 reference.addValueEventListener(new ValueEventListener() {
@@ -58,7 +60,7 @@ public class HistoryActivity extends AppCompatActivity
                                 if (key.equals(userID)) {
                                     Order info = snap.getValue(Order.class);
                                     String s = "Name:" + info.getName() + "\nDate:" + info.getDate() + "\n" + "Price:" + info.getPrice() + "\n" + "Status:" + info.getStatus() + "\n" + "Summary:" + info.getSummary() + "\nAddress:" + info.getAddress();
-                                    list.add(new Order(info.getDate(),info.getPrice(),info.getSummary(),info.getStatus(),info.getAddress(),info.getName()));
+                                    list.add(info);
                                 }
 
                             }
@@ -73,8 +75,8 @@ public class HistoryActivity extends AppCompatActivity
 
                     }
                 });
-            }
-        });
+
+
     };
 }
 

@@ -59,22 +59,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_margin="10dp">
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Click to check History"
-            android:layout_marginTop="10dp"
-            android:id="@+id/historybutton"
-            android:textColor="#000000"
-            app:backgroundTint="#FFFFFF"
-            android:background="@drawable/button_bg"/>
 
 
-        <ListView
-            android:id="@+id/listView"
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/userList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
             android:dividerHeight="15dp"
             android:padding="10dp" />
 
