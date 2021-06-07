@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -148,21 +149,36 @@ public class OrderActivity extends AppCompatActivity {
                 loadingBar.setCanceledOnTouchOutside(false);
                 loadingBar.show();
                 String dateString = date.getText().toString();
-                String priceString = price.getText().toString();
-                String addressString = address.getText().toString();
-                String fullNameString = fullName.getText().toString();
-                String summary = summ;
-                String status = "Pending";
-                rootNode = FirebaseDatabase.getInstance();
-                mAuth= FirebaseAuth.getInstance();
-                String userID = mAuth.getCurrentUser().getUid();
-                reference = rootNode.getReference("orders");
-                Order order = new Order(dateString,priceString,summary,status,addressString,fullNameString);
-                reference.child(dateString).child(userID).setValue(order);
-                loadingBar.dismiss();
-                Toast.makeText(OrderActivity.this, "Order placed successfully :)", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(),Dashboard.class);
-                startActivity(intent);
+                if (TextUtils.isEmpty(date.getText())) {
+                    date.setError("Please Enter Delivery Date");
+                    date.requestFocus();
+                } else {
+                    String priceString = price.getText().toString();
+                    String addressString = address.getText().toString();
+                    if (TextUtils.isEmpty(address.getText())) {
+                        address.setError("Please Enter Address");
+                        address.requestFocus();
+                    } else {
+                        String fullNameString = fullName.getText().toString();
+                        if (TextUtils.isEmpty(fullName.getText())) {
+                            fullName.setError("Please Enter Your Name");
+                            fullName.requestFocus();
+                        } else {
+                            String summary = summ;
+                            String status = "Pending";
+                            rootNode = FirebaseDatabase.getInstance();
+                            mAuth = FirebaseAuth.getInstance();
+                            String userID = mAuth.getCurrentUser().getUid();
+                            reference = rootNode.getReference("orders");
+                            Order order = new Order(dateString, priceString, summary, status, addressString, fullNameString);
+                            reference.child(dateString).child(userID).setValue(order);
+                            loadingBar.dismiss();
+                            Toast.makeText(OrderActivity.this, "Order placed successfully :)", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), Dashboard.class);
+                            startActivity(intent);
+                        }
+                    }
+                }
             }
         });
     }
