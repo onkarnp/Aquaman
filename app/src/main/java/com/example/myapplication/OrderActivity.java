@@ -32,7 +32,7 @@ public class OrderActivity extends AppCompatActivity {
     private EditText date,address,fullName;
     private TextView price,summary;
     private ProgressDialog loadingBar;
-    TextView t1;
+    TextView t1,t2;
 
 
     //Initiation of Firebase attributes
