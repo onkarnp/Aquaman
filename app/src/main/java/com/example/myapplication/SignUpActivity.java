@@ -26,9 +26,11 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     private static final String USER ="User";
+
     private EditText inputFullName,inputHomeAddress,inputMobileNo,inputEmail,inputPassword,inputConfirmPassword;
     private Button signUpButton;
     private ProgressDialog loadingBar;
+
     private FirebaseAuth mAuth;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
